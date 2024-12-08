@@ -1,0 +1,48 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup JF Cli
+      uses: jfrog/setup-jfrog-cli@v4.4.1
+      env:
+        JF_URL: ${{ secrets.JF_URL }}
+
+    - name: Build Maven With JFrog CLI
+      run: |
+        # Export the build name and build number
+        # Collect environment variables for the build
+        #jf rt build-collect-env
+        # Collect VCS details from git and add them to the build
+        #jf rt build-add-git
+        # Build maven with jfrog cli
+        #jf mvn-config
+        #jf mvn clean install --file pom.xml
+        mvn deploy --file pom.xml
+        # -s .m2/settings.xml
+        # Push BuildInfo to artifactory
+        #jf rt build-publish
