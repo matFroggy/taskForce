@@ -28,9 +28,13 @@ jobs:
         distribution: 'temurin'
 
     - name: Setup JF Cli
-      uses: jfrog/setup-jfrog-cli@v4.4.1
+      uses: jfrog/setup-jfrog-cli@v4
       env:
+        # JFrog platform url (for example: https://acme.jfrog.io)
         JF_URL: ${{ secrets.JF_URL }}
+      with:
+        # Name of the OIDC provider as specified on the OIDC integration page in the JFrog Platform
+        oidc-provider-name: mathieup-github
 
     - name: Build Maven With JFrog CLI
       run: |
