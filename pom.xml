@@ -31,6 +31,7 @@
       </snapshotRepository>
   </distributionManagement>
   <build>
+    <finalName>MyTaskApp</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
