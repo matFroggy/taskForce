@@ -18,13 +18,18 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-    <distributionManagement>
+  <distributionManagement>
       <repository>
-        <id>central</id>
-        <name>maven-local-snapshots</name>
-        <url>https://psemea.jfrog.io/artifactory/tf-mvn-libs-snapshot</url>
+          <id>central</id>
+          <name>psemea-artifactory-primary-0-releases</name>
+          <url>https://psemea.jfrog.io/artifactory/tf-mvn</url>
       </repository>
-    </distributionManagement>
+      <snapshotRepository>
+          <id>snapshots</id>
+          <name>psemea-artifactory-primary-0-snapshots</name>
+          <url>https://psemea.jfrog.io/artifactory/tf-mvn</url>
+      </snapshotRepository>
+  </distributionManagement>
   <build>
     <pluginManagement>
       <plugins>
