@@ -1,2 +1,4 @@
 FROM alpine
-RUN echo "Hello frog!"
+ADD jar/*.jar /app
+
+EXPOSE 8080
