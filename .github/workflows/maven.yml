@@ -51,6 +51,7 @@ jobs:
         jf mvn clean install --file pom.xml
         #mvn deploy --file pom.xml -s .m2/settings.xml
         # Export the build name and build number
+        ls -lrt /home/runner/.m2
         # Collect environment variables for the build
         jf rt build-collect-env
         # Collect VCS details from git and add them to the build
