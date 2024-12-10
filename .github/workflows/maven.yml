@@ -55,6 +55,8 @@ jobs:
         jf rt build-collect-env
         # Collect VCS details from git and add them to the build
         jf rt build-add-git
+        # Add dependencies
+        jf rt bad
         # Push BuildInfo to artifactory
         jf rt build-publish --project tf
 
