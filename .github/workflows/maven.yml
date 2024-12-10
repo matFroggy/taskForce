@@ -56,7 +56,7 @@ jobs:
         # Collect VCS details from git and add them to the build
         jf rt build-add-git
         # Push BuildInfo to artifactory
-        jf rt build-publish
+        jf rt build-publish --project tf
 
     - name: Build Docker Image With JFrog CLI
       env:
@@ -69,4 +69,4 @@ jobs:
         jf docker push "docker/mvn-docker:1.0.0"
 
         # Publish build info
-        jf rt build-publish
+        jf rt build-publish --project tf
