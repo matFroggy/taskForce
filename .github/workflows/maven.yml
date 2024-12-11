@@ -62,7 +62,6 @@ jobs:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
       run: |
         # Build Docker image
-        docker cp /home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/*.jar /usr/local
         docker build -t "docker/mvn-docker:1.0.0" .
 
         # Push image to Artifactory
