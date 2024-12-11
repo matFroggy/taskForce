@@ -100,7 +100,7 @@ jobs:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
       run: |
         # Build Docker image
-        docker build -t "$JF_URL/docker/mvn-docker:1.0.0" .
+        jf docker build -t "$JF_URL/docker/mvn-docker:1.0.0" .
 
         # Push image to Artifactory
         jf docker push "$JF_URL/docker/mvn-docker:1.0.0" --project tf
