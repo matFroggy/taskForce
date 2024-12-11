@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: TF Maven
 
 on:
   push:
@@ -55,7 +55,7 @@ jobs:
         jf mvn-config
         jf mvn clean install --file pom.xml
         # Publish build info
-        jf rt build-publish
+        jf rt build-publish --project tf
 
     - name: Build Docker Image With JFrog CLI
       env:
