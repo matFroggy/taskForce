@@ -99,6 +99,7 @@ jobs:
         JF_URL: ${{ secrets.JF_URL }}
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
       run: |
+        jf docker login -umathieup $JF_URL
         # Build Docker image
         jf docker build -t "docker/mvn-docker:1.0.0" .
 
