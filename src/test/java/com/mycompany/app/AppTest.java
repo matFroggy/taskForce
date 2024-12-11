@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import org.junit.jupiter.api.Test;
+import org.apache.logging.log4j.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
