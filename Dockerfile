@@ -1,4 +1,10 @@
-FROM alpine
-COPY /home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/*.jar /app
+FROM openjdk:8-jdk
+
+RUN mkdir /app
+
+COPY app.jar /app/app.jar
+
+WORKDIR /app
 
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
