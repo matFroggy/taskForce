@@ -96,6 +96,8 @@ jobs:
 
     - name: Build Docker Image With JFrog CLI
       env:
+        # Generated and maintained by GitHub
+        JFROG_CLI_BUILD_NAME: tf-docker
         JF_URL: ${{ secrets.JF_URL }}
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
         DOCKER_TOKEN: ${{ secrets.JF_DOCKER_ACCESS_TOKEN }}
