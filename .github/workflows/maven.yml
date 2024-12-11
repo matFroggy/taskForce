@@ -48,12 +48,12 @@ jobs:
       run: |
         # Export the build name and build nuber
         # Collect environment variables for the build
-        jf rt build-collect-env
+        jf rt build-collect-env --project tf
         # Collect VCS details from git and add them to the build
-        jf rt build-add-git
+        jf rt build-add-git --project tf
         # Trying Max command to have deps into buildInfo
         jf mvn-config
-        jf mvn clean install --file pom.xml
+        jf mvn clean install --file pom.xml --project tf
         # Publish build info
         jf rt build-publish --project tf
 
