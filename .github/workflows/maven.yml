@@ -98,8 +98,9 @@ jobs:
       env:
         JF_URL: ${{ secrets.JF_URL }}
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
+        DOCKER_TOKEN: ${{ secrets.JF_DOCKER_ACCESS_TOKEN }}
       run: |
-        jf docker login -umathieup $JF_URL
+        jf docker login -u mathieup -p $DOCKER_TOKEN $JF_URL
         # Build Docker image
         jf docker build -t "docker/mvn-docker:1.0.0" .
 
