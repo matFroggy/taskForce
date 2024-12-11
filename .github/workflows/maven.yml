@@ -46,28 +46,27 @@ jobs:
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
       run: |
-        # Build maven with jfrog cli
-        jf mvn-config
-        jf mvn clean install --file pom.xml
-        #mvn deploy --file pom.xml -s .m2/settings.xml
-        # Export the build name and build number
-        ls -lsart /home/runner/.m2/repository
+        # Export the build name and build nuber
         # Collect environment variables for the build
         jf rt build-collect-env
         # Collect VCS details from git and add them to the build
         jf rt build-add-git
-        # Push BuildInfo to artifactory
-        jf rt build-publish --project tf
+        # Trying Max command to have deps into buildInfo
+        jf mvn-config
+        jf mvn clean install --file pom.xml
+        # Publish build info
+        jf rt build-publish
 
     - name: Build Docker Image With JFrog CLI
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
       run: |
         # Build Docker image
-        docker build -t "docker/mvn-docker:1.0.0" .
+        echo "Hello"
+        #docker build -t "docker/mvn-docker:1.0.0" .
 
         # Push image to Artifactory
-        jf docker push "docker/mvn-docker:1.0.0"
+        #jf docker push "docker/mvn-docker:1.0.0"
 
         # Publish build info
-        jf rt build-publish --project tf
+        #jf rt build-publish --project tf
