@@ -102,10 +102,10 @@ jobs:
       run: |
         jf docker login -u mathieup -p $DOCKER_TOKEN $JF_URL
         # Build Docker image
-        jf docker build -t "docker/mvn-docker:1.0.0" .
+        jf docker build -t "mvn-docker:1.0.0" .
 
         # Push image to Artifactory
-        jf docker push "$JF_URL/docker/mvn-docker:1.0.0" --project tf
+        jf docker push "psemea.jfrog.io/tf-docker-virt/mvn-docker:1.0.0" --project tf
 
         # Publish build info
         jf rt build-publish --project tf
