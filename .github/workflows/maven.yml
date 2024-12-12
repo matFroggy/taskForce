@@ -55,7 +55,7 @@ jobs:
         jf mvn-config
         jf mvn clean install --file pom.xml --project tf
         # Publish build info
-        jf rt build-publish --project tf
+        jf rt build-publish --include-dependencies --project tf
 
     - uses: actions/upload-artifact@v4
       with:
