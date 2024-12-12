@@ -46,7 +46,7 @@ jobs:
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
         BUILD: ${{ github.run_number }}
-        JFROG_CLI_BUILD_NAME: tf-maven
+        JFROG_CLI_BUILD_NAME: Java CI with Maven
         JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
         # Export the build name and build nuber
