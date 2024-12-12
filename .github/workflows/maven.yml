@@ -115,8 +115,8 @@ jobs:
         # Push image to Artifactory
         jf docker push "psemea.jfrog.io/tf-docker-virt/mvn-docker:1.0.0" --project tf
 
-        # scan image docker
-        jf docker scan "psemea.jfrog.io/tf-docker-virt/mvn-docker:1.0.0" --project tf
-
         # Publish build info
         jf rt build-publish --project tf
+
+        # scan image docker
+        jf build-scan tf-docker $JFROG_CLI_BUILD_NUMBER --project tf
