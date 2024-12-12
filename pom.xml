@@ -7,6 +7,16 @@
   <version>${env.BUILD}-SNAPSHOT</version>
   <name>my-app</name>
   <url>https://maven.apache.org</url>
+
+
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>tf-mvn-virt</name>
+      <url>https://psemea.jfrog.io/artifactory/tf-mvn-virt</url>
+    </repository>
+  </distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
