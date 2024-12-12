@@ -64,7 +64,7 @@ jobs:
         #sleep 10
         #jf rt bpr $JFROG_CLI_BUILD_NAME $JFROG_CLI_BUILD_NUMBER tf-mvn-dev --include-dependencies --project tf
         #jf audit --mvn --project tf
-        jf scan /home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/*.jar --project tf
+        #jf scan /home/runner/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/*.jar --project tf
 
     - uses: actions/upload-artifact@v4
       with:
