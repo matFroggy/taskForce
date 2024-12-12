@@ -45,6 +45,7 @@ jobs:
     - name: Build Maven With JFrog CLI
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
+        BUILD: ${{ github.run_number }}
         JFROG_CLI_BUILD_NAME: tf-maven
         JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
