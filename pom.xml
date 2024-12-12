@@ -38,18 +38,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <distributionManagement>
-      <repository>
-          <id>central</id>
-          <name>psemea-artifactory-primary-0-releases</name>
-          <url>https://psemea.jfrog.io/artifactory/tf-mvn</url>
-      </repository>
-      <snapshotRepository>
-          <id>snapshots</id>
-          <name>psemea-artifactory-primary-0-snapshots</name>
-          <url>https://psemea.jfrog.io/artifactory/tf-mvn</url>
-      </snapshotRepository>
-  </distributionManagement>
   <build>
     <pluginManagement>
       <plugins>
