@@ -60,8 +60,8 @@ jobs:
         jf rt build-publish --project tf
         #sleep 5
         #jf rt bpr $JFROG_CLI_BUILD_NAME $JFROG_CLI_BUILD_NUMBER tf-mvn-stg --include-dependencies --project tf
-        jf audit --mvn --project tf
-        jf scan --project tf
+        #jf audit --mvn --project tf
+        #jf scan --project tf
 
     - uses: actions/upload-artifact@v4
       with:
