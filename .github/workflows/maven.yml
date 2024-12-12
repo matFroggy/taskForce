@@ -45,6 +45,7 @@ jobs:
     - name: Build Maven With JFrog CLI
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
+        JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
         # Export the build name and build nuber
         # Collect environment variables for the build
@@ -55,7 +56,8 @@ jobs:
         jf mvn-config
         jf mvn clean install --file pom.xml --project tf
         # Publish build info
-        jf rt build-publish --include-dependencies --project tf
+        jf rt build-publish --project tf
+        jf rt bpr "TF Maven" $JFROG_CLI_BUILD_NUMBER tf-mvn-stg --include-dependencies
 
     - uses: actions/upload-artifact@v4
       with:
