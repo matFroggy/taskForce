@@ -56,7 +56,7 @@ jobs:
         jf rt build-add-git --project tf
         # Trying Max command to have deps into buildInfo
         jf mvn-config
-        jf mvn clean install --file pom.xml --project tf
+        jf mvn clean install --file pom.xml --settings .m2/settings.xml --project tf
         # deploy artefact
         #jf mvn deploy --file pom.xml --project tf
         # Publish build info
