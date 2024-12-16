@@ -55,10 +55,8 @@ jobs:
         # Collect VCS details from git and add them to the build
         jf rt build-add-git --project tf
         # Trying Max command to have deps into buildInfo
-        jf mvn-config
-        jf mvn clean install --file pom.xml --settings .m2/settings.xml --project tf
-        # deploy artefact
-        #jf mvn deploy --file pom.xml --project tf
+        jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
+        jf mvn clean install --project tf
         # Publish build info
         jf rt build-publish --project tf
         #sleep 10
