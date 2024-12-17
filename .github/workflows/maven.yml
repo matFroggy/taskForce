@@ -25,16 +25,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Actions
+      uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup JF Cli
+    - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
-      id: conf
       env:
         # JFrog platform url (for example: https://acme.jfrog.io)
         JF_URL: ${{ secrets.JF_URL }}
@@ -42,15 +42,16 @@ jobs:
         # Name of the OIDC provider as specified on the OIDC integration page in the JFrog Platform
         oidc-provider-name: mathieup-github
 
-    - name: Build Maven With JFrog CLI
+    - name: Configure CLI for Maven
+      # Jfrog CLI maven config, mandatory (options too) to push/config endpoints
+      run: jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
+
+    - name: Build Maven With JFrog CLI, Publish artefact & buildInfo
       env:
         TOKEN: ${{ secrets.JF_MVN_ACCESS_TOKEN_DEV }}
-        BUILD: ${{ github.run_number }}
         JFROG_CLI_BUILD_NAME: tf-maven
         JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
-        # Jfrog CLI maven config, mandatory (options too) to push/config endpoints
-        jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
         # No need to specify pom or settings to work with jf mvnc
         # Nice to know: clean install will actually deploy with JF CLI, whereas it does not with mvn command.
         jf mvn clean install --project tf
