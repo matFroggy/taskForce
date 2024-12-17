@@ -49,9 +49,11 @@ jobs:
         JFROG_CLI_BUILD_NAME: tf-maven
         JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
-        #jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
-        jf mvn clean install -f pom.xml -s .m2/settings.xml --project tf
-        # Export the build name and build nuber
+        # Jfrog CLI maven config, mandatory (options too) to push/config endpoints
+        jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
+        # No need to specify pom or settings to work with jf mvnc
+        # Nice to know: clean install will actually deploy with JF CLI, whereas it does not with mvn command.
+        jf mvn clean install --project tf
         # Collect environment variables for the build
         jf rt build-collect-env --project tf
         # Collect VCS details from git and add them to the build
