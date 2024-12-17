@@ -49,14 +49,13 @@ jobs:
         JFROG_CLI_BUILD_NAME: tf-maven
         JFROG_CLI_BUILD_NUMBER : ${{ github.run_number }}
       run: |
+        #jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
+        jf mvn clean install -f pom.xml -s .m2/settings.xml --project tf
         # Export the build name and build nuber
         # Collect environment variables for the build
         jf rt build-collect-env --project tf
         # Collect VCS details from git and add them to the build
         jf rt build-add-git --project tf
-        # Trying Max command to have deps into buildInfo
-        #jf mvn-config --repo-resolve-releases tf-mvn-virt --repo-resolve-snapshots tf-mvn-virt --repo-deploy-releases tf-mvn-virt --repo-deploy-snapshots tf-mvn-virt
-        jf mvn clean install -f pom.xml -s .m2/settings.xml --project tf
         # Publish build info
         jf rt build-publish --project tf
         #sleep 10
